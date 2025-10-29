@@ -1,0 +1,64 @@
+name: Deploy Static Site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main   # deploy only when pushing to main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node (for ESLint)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install ESLint
+        run: |
+          npm init -y
+          npm install eslint --save-dev
+
+      - name: Create ESLint config
+        run: |
+          cat <<EOF > .eslintrc.json
+          {
+            "env": { "browser": true, "es2021": true },
+            "extends": "eslint:recommended",
+            "rules": {
+              "semi": ["error", "always"]
+            }
+          }
+          EOF
+
+      - name: Run linter
+        run: npx eslint script.js
+
+      - name: Upload pages artifact (site files)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .   # upload everything (index.html, styles.css, assets/)
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
