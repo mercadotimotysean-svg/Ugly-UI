@@ -3,7 +3,7 @@ name: Deploy Static Site to GitHub Pages
 on:
   push:
     branches:
-      - main   # deploy only when pushing to main
+      - main
 
 permissions:
   contents: read
@@ -23,21 +23,23 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install ESLint
+      - name: Install dependencies (including ESLint)
         run: |
           npm init -y
           npm install eslint --save-dev
 
-      - name: Run linter
-        run: npx eslint script.js
+      - name: Run ESLint
+        run: |
+          npx eslint script.js
 
-      - name: Upload pages artifact (site files)
+      - name: Upload site files for deployment
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .   # upload everything (index.html, styles.css, assets/)
+          path: .
 
   deploy:
     needs: build
+    runs-on: ubuntu-latest
     permissions:
       pages: write
       id-token: write
@@ -45,7 +47,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
 
-    runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
         id: deploy
