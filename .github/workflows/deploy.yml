@@ -1,14 +1,10 @@
-name: Deploy Static Site to GitHub Pages
+# .github/workflows/deploy.yml
+
+name: Deploy Static Site
 
 on:
   push:
-    branches:
-      - main
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+    branches: ["main"]
 
 jobs:
   build:
@@ -18,36 +14,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node (for ESLint)
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: "20"
 
-      - name: Install dependencies (including ESLint)
-        run: |
-          npm init -y
-          npm install eslint --save-dev
+      - name: Install dependencies
+        run: npm install
 
       - name: Run ESLint
-        run: |
-          npx eslint script.js
-
-      - name: Upload site files for deployment
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deploy
-        uses: actions/deploy-pages@v4
+        run: npm run lint
