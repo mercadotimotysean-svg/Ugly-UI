@@ -6,4 +6,4 @@ document.addEventListener("DOMContentLoaded", () => {
   info.textContent =
     "This page is a static demo. The JS has an intentional linting issue (missing semicolon)."
   document.querySelector(".wrap").appendChild(info)
-})   // <-- intentional missing semicolon
+});
