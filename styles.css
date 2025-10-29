@@ -1,0 +1,72 @@
+:root {
+  --bg: #0f1724;
+  --card: rgba(255, 255, 255, 0.03);
+  --muted: #9ca3af;
+}
+
+body {
+  font-family: Inter, ui-sans-serif, system-ui, Arial;
+  margin: 0;
+  background: linear-gradient(180deg, #071024 0%, #0b1220 100%);
+  color: #e6eef8;
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 36px auto;
+  padding: 28px;
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.lead {
+  color: var(--muted);
+}
+
+.badge {
+  background: rgba(255,255,255,0.08);
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+.screenshot img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.card {
+  background: rgba(255,255,255,0.03);
+  padding: 18px;
+  border-radius: 10px;
+}
+
+.improvements {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 18px;
+}
+
+ul, ol {
+  color: var(--muted);
+}
+
+footer {
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}

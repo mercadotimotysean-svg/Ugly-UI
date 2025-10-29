@@ -1,21 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ugly UI Showcase</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>arngren.net — UI critique</title>
 </head>
 <body>
-  <h1>Ugliest UI Ever</h1>
-  <img src="Uglys.png" alt="Ugly UI Screenshot" />
-  <p>This UI is cluttered, uses harsh colors, and lacks spacing. To improve it, I would:</p>
-  <ul>
-    <li>Use a clean, modern layout</li>
-    <li>Apply a consistent color palette</li>
-    <li>Add whitespace and padding</li>
-    <li>Improve typography and hierarchy</li>
-  </ul>
+  <div class="wrap">
+    <header>
+      <div class="badge">arngren.net</div>
+      <div>
+        <h1>Quick critique: the ugliest UI I could find</h1>
+        <p class="lead">
+          Below: the screenshot named <code>uglys.png</code>
+          stored under the <code>assets/</code> folder.
+        </p>
+      </div>
+    </header>
+
+    <div class="screenshot card">
+      <img src="assets/uglys.png" alt="Ugliest UI screenshot" />
+    </div>
+
+    <div class="improvements">
+      <div class="card">
+        <h2>What I would do to improve this UI</h2>
+        <ol>
+          <li><strong>Establish visual hierarchy</strong> — clear typography & spacing.</li>
+          <li><strong>Whitespace & layout</strong> — use a grid instead of clutter.</li>
+          <li><strong>Accessible colors</strong> — fix contrast problems.</li>
+          <li><strong>Consistent controls</strong> — standardized buttons/UI.</li>
+          <li><strong>Performance</strong> — compress images + mobile responsive.</li>
+          <li><strong>Iteration</strong> — user feedback + continuous refinement.</li>
+        </ol>
+      </div>
+
+      <aside class="card">
+        <h3>Quick fixes (low effort, high impact)</h3>
+        <ul>
+          <li>Increase font-size and spacing.</li>
+          <li>Limit color palette to 3–4 colors.</li>
+          <li>Use proper grouping and headings.</li>
+          <li>Remove chaotic background elements.</li>
+        </ul>
+
+        <h4>Developer note</h4>
+        <p>
+          This project will be used to demonstrate CI/CD on GitHub Actions with
+          JS linting. The JS contains an intentional semicolon error.
+        </p>
+      </aside>
+    </div>
+
+    <footer>
+      <small>
+        Software Configuration Management project — static site with CI/CD and linting.
+      </small>
+    </footer>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
