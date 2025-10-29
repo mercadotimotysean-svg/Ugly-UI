@@ -17,18 +17,17 @@ export default [
     },
 
     rules: {
-      // 🔒 Best practices
-      "eqeqeq": "warn",
-      "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+      // Best practices
+      eqeqeq: "warn",
+      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
       "no-console": "off",
 
-      // 🎯 Code style
-      "semi": ["error", "always"],
-      "quotes": ["error", "double"],
-      "indent": ["error", 2],
+      // Style rules
+      semi: ["error", "always"],
+      quotes: ["error", "double"],
+      indent: ["error", 2],
     },
   },
 
-  // ESLint recommended rules
   js.configs.recommended,
 ];
