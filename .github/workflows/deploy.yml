@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
@@ -14,15 +16,18 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+     	    uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install eslint dependencies
-        run: npm install eslint @eslint/js globals --save-dev
+      - name: Install dependencies
+        run: npm ci || npm install
+
+      - name: Fix eslint permissions (important!)
+        run: chmod +x ./node_modules/.bin/eslint
 
       - name: Run ESLint
         run: npx eslint script.js
