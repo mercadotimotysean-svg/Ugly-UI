@@ -1,23 +1,17 @@
 {
   "name": "ugly-ui",
   "version": "1.0.0",
-  "description": "",
-  "main": "scipt.js",
+  "description": "Static site with linting, testing, and GitHub Actions CI/CD",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint .",
+    "test": "jest"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mercadotimotysean-svg/Ugly-UI.git"
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mercadotimotysean-svg/Ugly-UI/issues"
-  },
-  "homepage": "https://github.com/mercadotimotysean-svg/Ugly-UI#readme",
   "devDependencies": {
-    "eslint": "^9.38.0"
+    "eslint": "^9.38.0",
+    "jest": "^29.7.0"
   }
 }
+
