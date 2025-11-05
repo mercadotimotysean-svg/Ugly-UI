@@ -30,4 +30,18 @@ export default [
   },
 
   js.configs.recommended,
+
+  // **Add this Jest override**
+  {
+    files: ["**/*.test.js"],
+    languageOptions: {
+      globals: {
+        test: "readonly",
+        expect: "readonly",
+        describe: "readonly",
+        beforeEach: "readonly",
+        afterEach: "readonly",
+      },
+    },
+  },
 ];
